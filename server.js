@@ -3,8 +3,10 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var methodOverride = require('method-override');
 var dotenv = require('dotenv').config();
 var database = require('./config/database');
+
 
 var indexRouter = require('./routes/index');
 var songsRouter = require('./routes/songs');
@@ -20,6 +22,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(methodOverride('_method')); 
 
 app.use('/', indexRouter);
 app.use('/songs', songsRouter);
