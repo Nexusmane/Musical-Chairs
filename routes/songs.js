@@ -1,14 +1,15 @@
 var express = require('express');
 var router = express.Router();
 const songsCtrl = require('../controllers/songs');
+const isLoggedIn = require('../config/auth');
 
 // All paths have /songs prefixed
 
 // GET "/songs/new" - New Route
-router.get('/new', songsCtrl.new);
+router.get('/new', isLoggedIn, songsCtrl.new);
 
 // POST "/songs" - Create Route
-router.get('/', songsCtrl.create);
+router.post('/', isLoggedIn, songsCtrl.create);
 
 // GET "/songs" - Index Route
 router.get('/', songsCtrl.index);

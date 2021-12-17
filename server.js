@@ -3,15 +3,26 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var session = require('express-session');
+var passport = require('passport');
 var methodOverride = require('method-override');
-var dotenv = require('dotenv').config();
-var database = require('./config/database');
 
+const isLoggedIn = require("./config/auth");
 
-var indexRouter = require('./routes/index');
-var songsRouter = require('./routes/songs');
+const indexRouter = require('./routes/index');
+const songsRouter = require('./routes/songs');
+const playlistsRouter = require('./routes/playlists');
 
-var app = express();
+// This will load our env variables
+require('dotenv').config();
+
+// This will connect us to the database
+require('./config/database');
+
+// require the passport module
+require('./config/passport');
+
+const app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -21,11 +32,26 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
+app.use(methodOverride('_method'));
+app.use(session({
+  secret: process.env.SECRET,
+  resave: false,
+  saveUninitialized: true
+}));
+app.use(passport.initialize());
+app.use(passport.session());
+app.use(function(req, res, next) {
+  // add req.user to res.locals
+  res.locals.user = req.user;
+  next();
+});
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(methodOverride('_method')); 
 
 app.use('/', indexRouter);
 app.use('/songs', songsRouter);
+app.use('/playlists', playlistsRouter);
+app.use('/', isLoggedIn, ); // Make sure to change 
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
