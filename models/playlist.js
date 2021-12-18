@@ -3,16 +3,20 @@ const Schema = mongoose.Schema;
 
 const playlistSchema = new Schema({
     playlistName: {
-        type: String, 
-        required: true
+      type: String, 
+      required: true
     },
     genre: {
       type: String,
       required: true,
     },
     playlistDescription: {
-        type: String, 
-  },
+      type: String, 
+    },
+    songId: [{
+      type: Schema.Types.ObjectId,
+      ref: 'Song'
+    }]
 }, 
     {
     timestamps: true
@@ -21,3 +25,5 @@ const playlistSchema = new Schema({
 
 
   module.exports = mongoose.model("Playlist", playlistSchema);
+
+  
