@@ -1,0 +1,18 @@
+<%- include('../partials/header') %>
+
+<section id="show-page">
+    <div>Playlist Name: </div>
+    <div><%= playlist.playlistName %></div>
+    <div>Genre: </div>
+    <div><%= playlist.genre %></div>
+    <div>Description: </div>
+    <div><%= playlist.playlistDescription %></div>
+    
+    <div>
+        <ul>
+        <%- playlist.songId.map(s => `<li> ${s.songName} ${s.artist} ${s.songDescription}</li>`).join(<br>) %>
+        </ul>
+    </div> 
+</section>
+
+<%- include('../partials/footer') %>
