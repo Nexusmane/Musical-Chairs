@@ -1,4 +1,5 @@
 const Song = require('../models/song')
+const Playlist = require('../models/playlist');
 
 
 module.exports = {
@@ -10,7 +11,10 @@ module.exports = {
 
 
 function newSong(req, res) {
-    res.render('songs/new', { title: 'Add A New Song' });
+    Playlist.find({}, function(err, playlists) {
+        console.log(playlists);
+    res.render('songs/new', { title: 'Add A New Song', playlists });
+    })
 };
 
 function index(req, res) {
@@ -31,6 +35,6 @@ function create(req, res) {
         return res.redirect("/songs/new");
         }
         console.log(song);
-        res.redirect("/songs");
+        res.redirect("/playlists");
     })
 };

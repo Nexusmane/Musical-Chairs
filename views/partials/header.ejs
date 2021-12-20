@@ -10,7 +10,7 @@
 </head>
 <body>
     <nav>
-        <a href="/songs" <%- title === 'Home' ? 'class="active"' : '' %>>Home</a>
+        <a href="/playlists" <%- title === 'Home' ? 'class="active"' : '' %>>Home</a>
         <% if (user) { %>
           <a href="/playlists/new"	<%- title === 'Add Playlist' ? 'class="active"' : '' %>>
               Add Playlist </a>

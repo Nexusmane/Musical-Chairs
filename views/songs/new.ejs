@@ -19,7 +19,9 @@
         <br>
     <label>Add to Playlist?</label>
     <select name="addToPlaylist">
-        <option value=""></option>  <!-- Make Dynamic based on users created playlists? -->
+        <% playlists.forEach(function(p) { %>
+            <option value=""><%= p.playlistName %></option>
+        <% }); %>
     </select>
     <br>
     <input type="submit" value="Add Song to Collection">

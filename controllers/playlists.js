@@ -9,18 +9,21 @@ module.exports = {
 
 
 function newPlaylist(req, res) {
-    res.render('playlists/new', { title: 'Add A New Playlist' });
-};
+        res.render('playlists/new', { title: 'Add A New Playlist' });
+}
 
 function index(req, res) {
-    res.render('playlist/index', { title: 'All Playlists' });
+    Playlist.find({}, function(err, playlists) {
+    res.render('playlists/index', { title: 'All Playlists', playlists });
+    })
 };
 
 function show(req, res) {
-    Playlist.findById(req.params.id, function (err, playlist) {
-        res.render('playlist/show', {title: "Playlist Details", playlist });
+    Playlist.findById(req.params.id, function (err, playlists) {
+        res.render('playlists/show', {title: "Playlist Details", playlists });
     });
 };
+
 
 function create(req, res) {
     const playlist = new Playlist(req.body);
