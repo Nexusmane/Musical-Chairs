@@ -17,3 +17,14 @@ a {
 .login img {
   height: 30px;
 }
+
+nav {
+  background: lightblue;
+  margin: 0 auto;
+  text-align: center;
+  justify-content: center;
+}
+
+h1 {
+ color: red;
+}

@@ -13,6 +13,10 @@ const songSchema = new Schema({
     songDescription: {
       type: String, 
     },
+    playlistId: {
+        type: Schema.Types.ObjectId,
+        ref: 'Playlist'
+    }
 }, 
     {
     timestamps: true
