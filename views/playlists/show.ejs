@@ -1,15 +1,21 @@
 <%- include('../partials/header') %>
 
 <section id="show-page">
-    <div>Playlist Name: <%= playlists.playlistName %></div>
-    <div>Genre: <%= playlists.genre %></div>
+
+    <h4>Playlist Name: <%= playlists.playlistName %></h4>
+    <h4>Genre: <%= playlists.genre %></h4>
+    <h6>*If you would like to edit the playlist, fill in the fields below and submit*</h6>
+
+        <form action="/playlists/<%= playlists._id %>?_method=PUT" method="POST">
+          <input name="editPlaylistName" value="<%= playlists.playlistName %>" />
+          <input name="editPlaylistGenre" value="<%= playlists.genre %>" />
+          <input type="submit" value="edit">
+        </form>
     
     <div>
         <ul>
-            <h5>Song Name, Artist & Song Description</h5>
-        <% playlists.songId.forEach(function(s) { %>
-           <li> <%= playlists.songId.map(s => `${s.songName}, ${s.artist}, ${s.songDescription}`) %> </li>
-        <% }); %>
+            <li>Song Name, Artist & Descr.</li>
+        <%= playlists.songId.map(s => ` ${s.songName}, By ${s.artist}, "${s.songDescription}"`) %>
         </ul>
     </div> 
     
@@ -26,7 +32,6 @@
         <input type="submit" value="Add Song to Playlist">
     </select>
     </form>
-
     
     <br> 
 

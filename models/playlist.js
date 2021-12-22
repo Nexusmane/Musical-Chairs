@@ -10,11 +10,15 @@ const playlistSchema = new Schema({
       type: String,
       required: true,
     },
+    user: {
+      type: Schema.Types.ObjectId,
+      ref: 'User'
+    },
     songId: [{
       type: Schema.Types.ObjectId,
       ref: 'Song'
     }]
-}, 
+  }, 
     {
     timestamps: true
     }

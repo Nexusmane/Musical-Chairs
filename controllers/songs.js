@@ -12,7 +12,6 @@ module.exports = {
 
 function newSong(req, res) {
     Playlist.find({}, function(err, playlists) {
-        console.log(playlists);
     res.render('songs/new', { title: 'Add A New Song', playlists });
     })
 };

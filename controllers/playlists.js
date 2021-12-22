@@ -8,6 +8,7 @@ module.exports = {
     create,
     delete: deletePlaylist,
     update: updatePlaylist,
+    edit: editPlaylist,
 };
 
 
@@ -28,8 +29,6 @@ function show(req, res) {
         })
     }
 )};
-
-
 
 function create(req, res) {
     const playlist = new Playlist(req.body);
@@ -61,3 +60,12 @@ function updatePlaylist(req, res) {
         })
     })
 }
+
+function editPlaylist(req, res){
+    Playlists.findById(req.params.id, function(err, playlist) {
+        playlist.playlistName = req.body.editPlaylistName
+        playlist.genre = req.body.editPlatlistGenre
+        playlist.save();
+        res.redirect(`/playlists/${playlist._id}`);
+    });
+};
