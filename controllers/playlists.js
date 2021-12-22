@@ -23,9 +23,12 @@ function index(req, res) {
 
 function show(req, res) {
     Playlist.findById(req.params.id).populate("songId").exec(function (err, playlists) {
-        res.render('playlists/show', {title: "Playlist Details", playlists });
-    });
-};
+        Song.find({}, function(err, songs) {
+            res.render('playlists/show', {title: "Playlist Details", playlists, songs });
+        })
+    }
+)};
+
 
 
 function create(req, res) {
@@ -35,25 +38,26 @@ function create(req, res) {
         console.log(err);
         return res.redirect("/playlists/new");
         }
-        console.log(playlist);
         res.redirect("/playlists");
     })
 };
 
 function deletePlaylist(req, res) {
+    console.log('running delete');
     Playlist.deleteOne({ _id:req.params.id }, function(err, playlist) {
-    if (!playlist.user.equals(req.user.id(req.params.id)))
-        return res.redirect(`playlists/${playlist._id}`);
-        playlist.remove();
+    // if (!playlist.user.equals(req.user.id(req.params.id)))
+        return res.redirect('/playlists');
     })
 };
 
 function updatePlaylist(req, res) {
-    Playlist.findById(req.body.addToPlaylist, function(err, playlist) {
-        playlist.songId.push(song);
-        playlist.save(function(err) {
-            if (err) console.log(err);
-            res.redirect(`/playlists/${playlist._id}`)
-        });
-    });
-};
+    Playlist.findById(req.params.id, function(err, playlist) {
+        Song.findById(req.body.addSongToList, function(err, song) {
+            playlist.songId.push(song);
+            playlist.save(function(err) {
+                if (err) console.log(err);
+                res.redirect(`/playlists/${playlist._id}`)
+            });
+        })
+    })
+}

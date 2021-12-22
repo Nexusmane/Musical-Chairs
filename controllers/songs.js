@@ -34,7 +34,7 @@ function create(req, res) {
         console.log(err);
         return res.redirect("/songs/new");
         }
-        console.log(req.body);
+        console.log(`this is in ${req.body.addToPlaylist} in the create function`);
         Playlist.findById(req.body.addToPlaylist, function(err, playlist) {
             playlist.songId.push(song);
             playlist.save(function(err) {

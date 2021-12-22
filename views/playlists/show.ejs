@@ -17,24 +17,22 @@
 
 <br> 
 
-<form id="update-form" action="songs" method="PUT">
-<label>Add New Song to Playlist?</label>
-<select name="addToPlaylist">
-    <% songs.forEach(function(s) { %>
-        <option value="<%= s._id%>"><%= s.songName %></option>
-    <% }); %>
-    <input type="submit" value="Add Song to Playlist">
-</select>
-</form>
+<form id="update-form" action="/playlists/<%= playlists._id%>" method="POST">
+    <label>Add New Song to Playlist?</label>
+    <select name="addSongToList">
+        <% songs.forEach(function(s) { %>
+            <option value="<%= s._id%>"><%= s.songName %></option>
+        <% }); %>
+        <input type="submit" value="Add Song to Playlist">
+    </select>
+    </form>
 
-<br>
+    
+    <br> 
 
-<br> 
-
-<form id="delete-form" action="/playlists/" method="DELETE">
-    <button type="submit"> Delete song </button>
-</form>
-
-
+    <form action="/playlists/<%=playlists._id %>?_method=DELETE" method="POST">
+        <button type="submit"> Delete Playlist </button>
+    </form>
+    <div> *Warning, this will delete the entire playlist you have created*</div>
 
 <%- include('../partials/footer') %>

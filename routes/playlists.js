@@ -3,7 +3,7 @@ var router = express.Router();
 const playlistsCtrl = require('../controllers/playlists');
 const isLoggedIn = require('../config/auth');
 
-// All paths have /songs prefixed
+// All paths have /playlists prefixed
 
 // GET "/playlists/new" - New Route
 router.get('/new', isLoggedIn, playlistsCtrl.new);
@@ -17,11 +17,11 @@ router.get('/', playlistsCtrl.index);
 // GET "/playlists/:id" - Show Route
 router.get('/:id', isLoggedIn, playlistsCtrl.show);
 
-// DELETE "/playlist"
+// DELETE "/playlists"
 router.delete('/:id', isLoggedIn, playlistsCtrl.delete)
 
-// PUT "/playlsit/:id" - Update playlist
-router.put('/:id', isLoggedIn, playlistsCtrl.update);
+// PUT "/playlists/:id" - Update playlist
+router.post('/:id', isLoggedIn, playlistsCtrl.update);
 
 
 module.exports = router;
