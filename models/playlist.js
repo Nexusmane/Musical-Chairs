@@ -10,9 +10,6 @@ const playlistSchema = new Schema({
       type: String,
       required: true,
     },
-    playlistDescription: {
-      type: String, 
-    },
     songId: [{
       type: Schema.Types.ObjectId,
       ref: 'Song'

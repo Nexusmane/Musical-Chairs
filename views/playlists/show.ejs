@@ -1,15 +1,15 @@
 <%- include('../partials/header') %>
 
 <section id="show-page">
-    <div>Playlist Name: </div> <div><%= playlists.playlistName %></div>
-    <div>Genre: </div>
-    <div><%= playlists.genre %></div>
-    <div>Description: </div>
-    <div><%= playlists.playlistDescription %></div>
+    <div>Playlist Name: <%= playlists.playlistName %></div>
+    <div>Genre: <%= playlists.genre %></div>
     
     <div>
         <ul>
-        <%= playlists.songId.map(s => `${s.songName} ${s.artist} ${s.songDescription}`) %>
+            <h5>Song Name, Artist & Song Description</h5>
+        <% playlists.songId.forEach(function(s) { %>
+           <li> <%= playlists.songId.map(s => `${s.songName}, ${s.artist}, ${s.songDescription}`) %> </li>
+        <% }); %>
         </ul>
     </div> 
     
