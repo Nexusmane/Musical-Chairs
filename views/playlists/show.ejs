@@ -15,17 +15,33 @@
           <input type="submit" value="edit">
         </form>
     <br>
-    <div>
-        <ul>
-            <li>Song Name, Artist & Descr.</li>
-        <%= playlists.songId.map(s => ` ${s.songName}, By ${s.artist}, "${s.songDescription}"`) %>
-        </ul>
-    </div> 
+
     
 </section>
 
 <br> 
 
+<table class="table table-dark">
+    <thead>
+      <tr>
+        <th scope="col">Song Name</th>
+        <th scope="col">Artist</th>
+        <th scope="col">Desc.</th>
+      </tr>
+    </thead>
+    <tbody>
+      
+        <% playlists.songId.forEach(function(s) { %>
+            <tr>
+                <td><%= s.songName %></td>
+                <td><%= s.artist %></td>
+                <td><%= s.songDescription %></td>
+              </tr>
+       <% }); %>
+    
+        </tbody>
+  </table>    
+  <br>
 <form id="update-form" action="/playlists/<%= playlists._id%>" method="POST">
     <label>Add New Song to Playlist?</label>
     <select name="addSongToList">

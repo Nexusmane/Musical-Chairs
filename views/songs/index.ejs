@@ -3,16 +3,5 @@
 
 <h1> Welcome to Musical Chairs </h1>
 
-<% if (user && user._id.equals(playlists.user)) { %>
-  <form action="/playlists/<%= playlists._id %>?_method=PUT" method="POST">
-    <input name="editPlaylistName" value="<%= playlists.playlistName %>" />
-    <input name="editPlaylistGenre" value="<%= playlists.genre %>" />
-    <input type="submit" value="edit">
-  </form>
-<% } else { %>
-  <div>Playlist Name: <%= playlists.playlistName %></div>
-  <div>Genre: <%= playlists.genre %></div>
-<% } %>
-
 
 <%- include('../partials/footer') %>
