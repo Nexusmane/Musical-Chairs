@@ -62,9 +62,9 @@ function updatePlaylist(req, res) {
 }
 
 function editPlaylist(req, res){
-    Playlists.findById(req.params.id, function(err, playlist) {
+    Playlist.findById(req.params.id, function(err, playlist) {
         playlist.playlistName = req.body.editPlaylistName
-        playlist.genre = req.body.editPlatlistGenre
+        playlist.genre = req.body.editPlaylistGenre
         playlist.save();
         res.redirect(`/playlists/${playlist._id}`);
     });

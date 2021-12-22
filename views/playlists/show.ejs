@@ -7,11 +7,14 @@
     <h6>*If you would like to edit the playlist, fill in the fields below and submit*</h6>
 
         <form action="/playlists/<%= playlists._id %>?_method=PUT" method="POST">
+        <br> <div>Edit Playlist name</div>
           <input name="editPlaylistName" value="<%= playlists.playlistName %>" />
+        <br> 
+        <div>Edit Playlist Genre</div>
           <input name="editPlaylistGenre" value="<%= playlists.genre %>" />
           <input type="submit" value="edit">
         </form>
-    
+    <br>
     <div>
         <ul>
             <li>Song Name, Artist & Descr.</li>

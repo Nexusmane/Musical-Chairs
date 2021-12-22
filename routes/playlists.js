@@ -17,14 +17,14 @@ router.get('/', playlistsCtrl.index);
 // GET "/playlists/:id" - Show Route
 router.get('/:id', isLoggedIn, playlistsCtrl.show);
 
-// DELETE "/playlists"
+// DELETE "/playlists/:id"
 router.delete('/:id', isLoggedIn, playlistsCtrl.delete)
 
 // PUT "/playlists/:id" - Update playlist
 router.post('/:id', isLoggedIn, playlistsCtrl.update);
 
 // POST "/playlists/:id" - Edit Playlist Details
-router.post('/:id', isLoggedIn, playlistsCtrl.edit);
+router.put('/:id', isLoggedIn, playlistsCtrl.edit);
 
 
 module.exports = router;
