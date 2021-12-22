@@ -12,10 +12,10 @@ router.get('/new', isLoggedIn, songsCtrl.new);
 router.post('/', isLoggedIn, songsCtrl.create);
 
 // GET "/songs" - Index Route
-router.get('/', songsCtrl.index);
+router.get('/', isLoggedIn, songsCtrl.index);
 
 // GET "/songs/:id" - Show Route
-router.get('/:id', songsCtrl.show);
+router.get('/:id', isLoggedIn, songsCtrl.show);
 
 
 module.exports = router;

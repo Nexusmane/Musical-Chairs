@@ -15,7 +15,13 @@ router.post('/', isLoggedIn, playlistsCtrl.create);
 router.get('/', playlistsCtrl.index);
 
 // GET "/playlists/:id" - Show Route
-router.get('/:id', playlistsCtrl.show);
+router.get('/:id', isLoggedIn, playlistsCtrl.show);
+
+// DELETE "/playlist"
+router.delete('/:id', isLoggedIn, playlistsCtrl.delete)
+
+// PUT "/playlsit/:id" - Update playlist
+router.put('/:id', isLoggedIn, playlistsCtrl.update);
 
 
 module.exports = router;

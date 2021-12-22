@@ -5,7 +5,9 @@ module.exports = {
     new: newPlaylist,
     index, 
     show, 
-    create
+    create,
+    delete: deletePlaylist,
+    update: updatePlaylist,
 };
 
 
@@ -20,8 +22,7 @@ function index(req, res) {
 };
 
 function show(req, res) {
-    Playlist.findById(req.params.id, function (err, playlists) {
-        console.log(playlists);
+    Playlist.findById(req.params.id).populate("songId").exec(function (err, playlists) {
         res.render('playlists/show', {title: "Playlist Details", playlists });
     });
 };
@@ -37,4 +38,22 @@ function create(req, res) {
         console.log(playlist);
         res.redirect("/playlists");
     })
+};
+
+function deletePlaylist(req, res) {
+    Playlist.deleteOne({ _id:req.params.id }, function(err, playlist) {
+    if (!playlist.user.equals(req.user.id(req.params.id)))
+        return res.redirect(`playlists/${playlist._id}`);
+        playlist.remove();
+    })
+};
+
+function updatePlaylist(req, res) {
+    Playlist.findById(req.body.addToPlaylist, function(err, playlist) {
+        playlist.songId.push(song);
+        playlist.save(function(err) {
+            if (err) console.log(err);
+            res.redirect(`/playlists/${playlist._id}`)
+        });
+    });
 };

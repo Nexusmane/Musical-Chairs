@@ -1,8 +1,7 @@
 <%- include('../partials/header') %>
 
 <section id="show-page">
-    <div>Playlist Name: </div>
-    <div><%= playlists.playlistName %></div>
+    <div>Playlist Name: </div> <div><%= playlists.playlistName %></div>
     <div>Genre: </div>
     <div><%= playlists.genre %></div>
     <div>Description: </div>
@@ -10,7 +9,7 @@
     
     <div>
         <ul>
-        <%- playlists.songId.map(s => ` ${s.songName} ${s.artist} ${s.songDescription}`) %>
+        <%= playlists.songId.map(s => `${s.songName} ${s.artist} ${s.songDescription}`) %>
         </ul>
     </div> 
     
@@ -18,13 +17,24 @@
 
 <br> 
 
-<form id="add-song-to-playlist" action="/playlists/<%= playlists._id %>/songs" method="POST">
-  <select name="songId">
+<form id="update-form" action="songs" method="PUT">
+<label>Add New Song to Playlist?</label>
+<select name="addToPlaylist">
     <% songs.forEach(function(s) { %>
-      <option value="<%= s._id %>"><%= s.songName %></option>
+        <option value="<%= s._id%>"><%= s.songName %></option>
     <% }); %>
-  </select>
-  <button type="submit">Add to Playlist</button>
+    <input type="submit" value="Add Song to Playlist">
+</select>
 </form>
+
+<br>
+
+<br> 
+
+<form id="delete-form" action="/playlists/" method="DELETE">
+    <button type="submit"> Delete song </button>
+</form>
+
+
 
 <%- include('../partials/footer') %>

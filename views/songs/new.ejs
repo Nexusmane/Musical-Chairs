@@ -14,7 +14,7 @@
         <input type="text" name="album">
         <br>
     <label>Note</label>
-        <input type="text" name="songNote">
+        <input type="text" name="songDescription">
         <br>
     <label>Favorite?</label>
         <input type="checkbox" name="favorite" checked>
@@ -22,7 +22,7 @@
     <label>Add to Playlist?</label>
     <select name="addToPlaylist">
         <% playlists.forEach(function(p) { %>
-            <option value=""><%= p.playlistName %></option>
+            <option value="<%= p._id%>"><%= p.playlistName %></option>
         <% }); %>
     </select>
     <br>
