@@ -1,16 +1,16 @@
 <%- include('../partials/header') %>
 
-
 <h1> Fill in the fields below to add a playlist</h1>
-
-<form id="new-form" action="/playlists" method="POST">
-    <label>Album Title</label>
-        <input type="text" name="playlistName">
+<div class="container">
+    <form id="new-form" action="/playlists" method="POST">
+        <label>Album Title</label>
+            <input type="text" name="playlistName">
         <br>
-    <label>Genres (Separate with commas)</label>
-        <input type="text" name="genre">
+        <label>Genres (Separate with commas)</label>
+            <input type="text" name="genre">
         <br>
-    <input type="submit" value="Add Playlist">
-  </form>
+        <button type="submit button" class="btn btn-success" value="Add Playlist"> Add Playlist</button>
+    </form>
+</div>
 
 <%- include('../partials/footer') %>

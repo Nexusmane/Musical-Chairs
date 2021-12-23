@@ -1,14 +1,12 @@
 const Song = require('../models/song')
 const Playlist = require('../models/playlist');
 
-
 module.exports = {
     new: newSong,
     index, 
     show, 
     create,
 };
-
 
 function newSong(req, res) {
     Playlist.find({}, function(err, playlists) {
@@ -33,7 +31,6 @@ function create(req, res) {
         console.log(err);
         return res.redirect("/songs/new");
         }
-        console.log(`this is in ${req.body.addToPlaylist} in the create function`);
         Playlist.findById(req.body.addToPlaylist, function(err, playlist) {
             playlist.songId.push(song);
             playlist.save(function(err) {
@@ -43,4 +40,3 @@ function create(req, res) {
         });
     })
 };
-

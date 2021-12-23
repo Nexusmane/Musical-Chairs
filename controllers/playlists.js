@@ -11,7 +11,6 @@ module.exports = {
     edit: editPlaylist,
 };
 
-
 function newPlaylist(req, res) {
         res.render('playlists/new', { title: 'Add A New Playlist' });
 }
@@ -42,9 +41,7 @@ function create(req, res) {
 };
 
 function deletePlaylist(req, res) {
-    console.log('running delete');
     Playlist.deleteOne({ _id:req.params.id }, function(err, playlist) {
-    // if (!playlist.user.equals(req.user.id(req.params.id)))
         return res.redirect('/playlists');
     })
 };

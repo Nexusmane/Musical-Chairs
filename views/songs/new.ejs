@@ -2,33 +2,26 @@
 
 <h1> Add your favorite song(s) below</h1>
 <h4> Don't forget to add a playlist or two as well!</h4>
-
-<form id="new-form" action="/songs" method="POST">
-    <label>Song Title:</label>
-        <input type="text" name="songName">
+<div class="container">
+    <form id="new-form" action="/songs" method="POST">
+        <label>Song Title:</label>
+            <input type="text" name="songName">
         <br>
-    <label>Artist:</label>
-        <input type="text" name="artist">
+        <label>Artist:</label>
+            <input type="text" name="artist">
         <br>
-    <label>Album</label>
-        <input type="text" name="album">
+        <label>Note</label>
+            <input type="text" name="songDescription">
         <br>
-    <label>Note</label>
-        <input type="text" name="songDescription">
+        <label>Add to Playlist?</label>
+            <select name="addToPlaylist">
+                <% playlists.forEach(function(p) { %>
+                    <option value="<%= p._id%>"><%= p.playlistName %></option>
+                <% }); %>
+            </select>
         <br>
-    <label>Favorite?</label>
-        <input type="checkbox" name="favorite" checked>
-        <br>
-    <label>Add to Playlist?</label>
-    <select name="addToPlaylist">
-        <% playlists.forEach(function(p) { %>
-            <option value="<%= p._id%>"><%= p.playlistName %></option>
-        <% }); %>
-    </select>
-    <br>
-    <input type="submit" value="Add Song to Collection">
-  </form>
-
-
+        <button type="submit button" class="btn btn-success" value="Add Song to Collection">Add Song to Collection</button>
+    </form>
+</div>
 
 <%- include('../partials/footer') %>
