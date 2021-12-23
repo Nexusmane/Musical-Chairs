@@ -25,7 +25,20 @@
       </tr>
     <% }); %>
   </tbody>
-</table>      
+</table> 
+<div class="container">
+<form id="update-form" action="/playlists/<%= playlists._id%>" method="POST">
+  <label class="p-3 mb-2 bg-secondary text-white">Add New Song to Playlist?</label> 
+  <br>
+  <select name="addSongToList">
+    <% songs.forEach(function(s) { %>
+      <option value="<%= s._id%>"><%= s.songName %></option>
+    <% }); %>
+  </select>
+  <br>
+  <input type="submit" class="btn btn-success " value="Add Song to Playlist">
+</form>  
+</div>      
 <br>
 <div class="container">
   <form action="/playlists/<%= playlists._id %>?_method=PUT" method="POST"> 
