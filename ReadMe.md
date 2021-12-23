@@ -6,9 +6,7 @@ Welcome to Musical Chairs!
 
 This web app was made to help you keep track of songs and organize them on the fly, when you don't have time to search them up on your favorite streaming app.
 
-<img src="https://i.imgur.com/LUH3QFa.png" alt="drawing" width="200"/>
-<img src="https://i.imgur.com/vxE6pj4.png" alt="drawing" width="200"/>
-<img src="https://i.imgur.com/KwIXYfc.png" alt="drawing" width="200"/>
+<img src="https://i.imgur.com/LUH3QFa.png" alt="drawing" width="200"/><img src="https://i.imgur.com/vxE6pj4.png" alt="drawing" width="200"/><img src="https://i.imgur.com/KwIXYfc.png" alt="drawing" width="200"/>
 
 
 ## Technologies Used
