@@ -21,6 +21,7 @@ This web app was made to help you keep track of songs and organize them on the f
 6. MongoDB
 7. Node.js
 8. Bootstrap
+9. Google OAuth2
 
 
 ## [Click here to go to the web application](https://jcole-musical-chairs.herokuapp.com)
