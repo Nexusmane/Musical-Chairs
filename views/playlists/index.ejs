@@ -1,7 +1,7 @@
 <%- include('../partials/header') %>
 
 
-<h1> Welcome to Musical Chairs </h1>
+<h1 class="p-3 mb-2 bg-secondary text-white"> Welcome to Musical Chairs </h1>
 <table class="table table-striped table-dark">
   <thead>
     <tr>
@@ -15,7 +15,7 @@
     <tr>
       <td><%= p.playlistName %></td>
       <td><%= p.genre %></td>
-      <td><a href="/playlists/<%= p._id %>">View More</a></td>
+      <td><a type="button" class="btn btn-info" href="/playlists/<%= p._id %>">View More</a></td>
     </tr>
     <% }); %>
   </tbody>

@@ -32,3 +32,10 @@ h1, h2, h4, a {
  margin: 0 auto;
 }
 
+
+input, button {
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  padding: 10px;
+}

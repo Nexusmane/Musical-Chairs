@@ -4,19 +4,9 @@
   <div class="container">
     <h4>Playlist Name: <%= playlists.playlistName %></h4>
     <h4>Genre: <%= playlists.genre %></h4>
-    <h6>*If you would like to edit the playlist, fill in the fields below and submit*</h6>
+    <h6 class="p-3 mb-2 bg-secondary text-white">*If you would like to edit the playlist, fill in the fields at the bottom and submit*</h6>
   </div>
-  <div class="container">
-        <form action="/playlists/<%= playlists._id %>?_method=PUT" method="POST">
-        <br> <div>Edit Playlist name</div>
-          <input name="editPlaylistName" value="<%= playlists.playlistName %>" />
-        <br> 
-        <div>Edit Playlist Genre</div>
-          <input name="editPlaylistGenre" value="<%= playlists.genre %>" />
-          <button type="submit button" class="btn btn-warning" value="edit"> Submit Edit </button>
-        </form>
-      </div>
-    <br>
+
 </section>
 <br> 
 <table class="table table-striped table-dark">
@@ -36,21 +26,22 @@
       </tr>
     <% }); %>
   </tbody>
-</table>    
+</table>      
 <br>
-<form id="update-form" action="/playlists/<%= playlists._id%>" method="POST">
-  <label>Add New Song to Playlist?</label>
-  <select name="addSongToList">
-    <% songs.forEach(function(s) { %>
-      <option value="<%= s._id%>"><%= s.songName %></option>
-    <% }); %>
-      <input type="submit" value="Add Song to Playlist">
-  </select>
-</form>    
-  <br> 
+<div class="container">
+  <form action="/playlists/<%= playlists._id %>?_method=PUT" method="POST"> 
+  <div>Edit Playlist name</div>
+    <input name="editPlaylistName" value="<%= playlists.playlistName %>" />
+  <div>Edit Playlist Genre</div>
+    <input name="editPlaylistGenre" value="<%= playlists.genre %>" />
+    <br>
+    <button type="submit button" class="btn btn-warning" value="edit"> Submit Edit </button>
+  </form>
+</div>  
+<br> 
 <div class="container">
   <form action="/playlists/<%=playlists._id %>?_method=DELETE" method="POST">
-    <button type="button" class="btn btn-danger" type="submit"> Delete Playlist </button>
+    <input type="submit" class="btn btn-danger" value="Delete Playlist">
   </form>
   <div> *Warning, this will delete the entire playlist you have created*</div>
 </div>
